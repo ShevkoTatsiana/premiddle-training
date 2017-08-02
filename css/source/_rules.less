@@ -1,0 +1,69 @@
+.display(@position) {
+  display: flex;
+  align-items: center;
+  justify-content: @position;
+}
+
+.circle(@size, @color1, @color2) {
+  width: @size;
+  height: @size;
+  background-color: @color1;
+  border-radius: 50%;
+  color: @color2;
+}
+
+.transition(@a:all; @time: 0.5s; @d:ease-out) {
+  -webkit-transform:translateZ(0);
+  -webkit-transition: @arguments;
+  -moz-transition: @arguments;
+  -o-transition: @arguments;
+  transition: @arguments;
+}
+
+.mix-color(@s; @color) {};
+
+.mix-color(dark; @color) {
+  background-color: darken(@color, 10%);
+}
+
+.mix-color(light; @color) {
+  background-color: lighten(@color, 10%);
+}
+
+.max-width(@height) {
+  @max-width: @height*3;
+}
+
+
+.button-checked(@n, @c, @i: 1) when (@i =< @n) {
+  .button@{i}:checked ~ .slider-component .inner {
+    margin-left: ((1 - @i)*100%/@c);
+  }
+  .button-checked(@n, @c, (@i + 1));
+}
+
+.label-display(@c, @i: 1) when (@i =< @c) {
+  @plus: @i + 1;
+  @minus: @i - 1;
+  .button@{i}:checked ~ .commands label:nth-child(@{plus}) when (@i < @c) {
+    .arrow-right();
+  }
+
+  .button@{i}:checked ~ .commands label:nth-child(1) when (@i = @c) {
+    .arrow-right();
+  }
+
+  .button@{i}:checked ~ .commands label:nth-child(@{c}) when (@i = 1) {
+    .arrow-left();
+  }
+
+  .button@{i}:checked ~ .commands label:nth-child(@{minus}) when (@i > 1) {
+    .arrow-left();
+  }
+
+  .label-display(@c, (@i + 1));
+}
+
+.merge-border() {
+  border-top+_: 1px solid;
+}

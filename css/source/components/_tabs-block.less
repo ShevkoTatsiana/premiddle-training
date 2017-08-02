@@ -1,0 +1,44 @@
+@color_text: @color-01;
+@description_max-height: 100px;
+
+.try-passig-rules-to-mixin(@rules) {
+  @media screen and (max-width: 380px) { @rules(); }
+}
+
+.tabs-block {
+  & {
+    .display(@position: center);
+    position: relative;
+  }
+
+  > .radio {
+    display: none;
+  }
+
+  > .description {
+    position: absolute;
+    top: 50px;
+    display: none;
+    .max-width(@description_max-height);
+    max-width: @max-width;
+    text-align: center;
+    color: @color_text;
+
+    .try-passig-rules-to-mixin({color: blue});
+  }
+
+  > .radio:checked + .link + .description {
+    display: block;
+  }
+
+  > .radio:checked + .link {
+    color: @color_text;
+    text-decoration: none;
+    cursor: text;
+  }
+
+  > .link{
+    cursor: pointer;
+    padding: 10px 20px;
+  }
+}
