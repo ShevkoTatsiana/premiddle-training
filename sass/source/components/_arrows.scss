@@ -1,0 +1,43 @@
+$circle__height: 20px;
+$circle__color: $main_color;
+$circle-text__color: $color-03;
+$arrow-right: '>';
+$arrow-left: '<';
+
+.arrow {
+    & {
+        position: absolute;
+        display: block;
+        cursor: pointer;
+    }
+
+    &:after {
+        font-weight: $font-weight_bold;
+        display: block;
+        text-align: center;
+        @include circle($size: $circle__height, $color1: $circle__color, $color2: $circle-text__color);
+    }
+}
+@mixin arrow-right() {
+    & {
+        right: 0;
+        margin-right: $circle__height;
+    }
+
+    &:after {
+        content: $arrow-right;
+    }
+}
+
+@mixin arrow-left() {
+    & {
+        left: 5px;
+    }
+
+    &:after {
+        content: $arrow-left;
+    }
+}
+
+
+

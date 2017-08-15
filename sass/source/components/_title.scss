@@ -1,0 +1,13 @@
+.title {
+    @if $my-option == true {
+        font {
+            size: $font-size_title;
+            weight: $font-weight_bold;
+        }
+
+        color: $main_color;
+
+        @include display(center);
+        text-align: center;
+    }
+}

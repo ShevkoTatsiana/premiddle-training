@@ -1,0 +1,33 @@
+@import 'components/_link.scss';
+@import '_variables.scss';
+@import 'components/_arrows.scss';
+@import '_rules.scss';
+@import 'components/_title.scss';
+@import 'components/_link.scss';
+//import (optional) 'components/not-exist.scss';
+@import 'components/_tabs-block.scss';
+@import 'components/_slider-block.scss';
+@import 'components/_akordeon-item.scss';
+
+$akordeon_padding-top: $description_max-height + 10px;
+$akordeon__padding-left: 10%;
+
+
+body {
+  border-top: join($merge-border, $color-02, space);
+  font-family: sans-serif;
+  font-size: $font-size;
+
+  > .link {
+    @include display($position: center);
+    padding-bottom: 30px;
+    color: $main_color;
+  }
+
+  > .akordeon {
+    padding: append($akordeon_padding-top $akordeon__padding-left, 0);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

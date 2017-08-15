@@ -1,0 +1,74 @@
+@mixin display($position) {
+  display: flex;
+  align-items: center;
+  justify-content: $position;
+}
+
+@mixin circle($size, $color1, $color2) {
+  width: $size;
+  height: $size;
+  background-color: $color1;
+  border-radius: 50%;
+  color: $color2;
+}
+
+@mixin transition($arguments) {
+  -webkit-transform:translateZ(0);
+  -webkit-transition: $arguments;
+  -moz-transition: $arguments;
+  -o-transition: $arguments;
+  transition: $arguments;
+}
+
+@function mix-color($switch, $color) {
+  @if $switch == light {
+    @return lighten($color, 10%);
+  } @else {
+    @return darken($color, 10%);
+  }
+};
+
+@function max-width($height) {
+  @return $height*3;
+}
+
+@mixin button-checked($n, $c) {
+  @for $i from 1 through $n {
+    .button#{$i}:checked ~ .slider-component .inner {
+      margin-left: ((1 - $i)*100%/$c);
+    }
+  }
+}
+
+@mixin label-display($c) {
+  @for $i from 1 through $c {
+    $plus: $i + 1;
+    $minus: $i - 1;
+
+    @if $i < $c {
+      .button#{$i}:checked ~ .commands label:nth-child(#{$plus}) {
+        @include arrow-right();
+      }
+    }
+
+    @else {
+      .button#{$i}:checked ~ .commands label:nth-child(1) {
+        @include arrow-right();
+      }
+    }
+
+  @if $i > 1 {
+    .button#{$i}:checked ~ .commands label:nth-child(#{$minus}) {
+      @include arrow-left();
+    }
+  }
+
+    @else {
+      .button#{$i}:checked ~ .commands label:nth-child(#{$c}) {
+        @include arrow-left();
+      }
+    }
+
+
+  }
+}

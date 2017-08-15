@@ -1,0 +1,109 @@
+$slider_background-color: $color-02;
+$slide-on-page-mobile__count: 1;
+$slide-on-page-tablet__count: 4;
+$commands-label-mobile__count: 6;
+$commands-label-tablet__count: 3;
+
+
+.slider-component {
+  position: absolute;
+  display: flex;
+  width: 100vw;
+  height: $slider__height;
+  left: 0;
+  background-color: $slider_background-color;
+
+  > .container {
+    width: inherit;
+    height: inherit;
+    overflow: hidden;
+  }
+
+  > .container > .inner {
+    display: flex;
+    height: inherit;
+    line-height: 0;
+  }
+
+  .slide {
+    padding: 30px 20px;
+    @include display($position: space-between);
+    flex-direction: column;
+    font-weight: $font-weight_bold;
+    box-sizing: border-box;
+  }
+
+   .slide .image {
+    width: 100px;
+  }
+}
+
+.commands {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.commands label {
+  @extend .arrow;
+}
+
+.commands,.commands label,
+.slider-component .inner{
+  @include transition(all 0.5s ease-out);
+}
+
+@media only screen and (min-width : 320px) {
+  .slider-component .inner {
+    width: 600%;
+    margin-left: 0;
+  }
+
+  .slider-component .slide {
+    width: 100vw;
+  }
+
+  @include button-checked($commands-label-mobile__count ,$slide-on-page-mobile__count);
+  @include label-display(6);
+}
+
+@media only screen and (min-width : 768px) {
+  .slider-component .inner {
+    width: 150%;
+    margin-left: 0;
+  }
+
+  .slider > .button4 ~ .commands label:nth-child(4),
+  .slider > .button5 ~ .commands label:nth-child(5),
+  .slider > .button6 ~ .commands label:nth-child(6) {
+    display: none !important;
+  }
+
+  .slider-component .slide {
+    width: 25vw;
+  }
+
+  @include button-checked($commands-label-tablet__count ,$slide-on-page-tablet__count);
+  .slider {
+    @include label-display(3);
+  }
+}
+
+@media only screen and (min-width : 1200px) {
+  .slider-component .inner {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .slide {
+    width: 16.67%;
+  }
+
+  .commands {
+    display: none;
+  }
+}

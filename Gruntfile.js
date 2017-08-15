@@ -13,12 +13,12 @@ module.exports = function(grunt) {
                     yuicompress: true,
                     optimization: 2
                 },
-                files: {'css/style.css': 'css/source/_module.less'}
+                files: {'css/style.css': 'less/source/_module.less'}
             }
         },
         watch: {
             css: {
-                files: ['css/*.less','css/**/*.less'],
+                files: ['less/*.less','less/**/*.less'],
                 tasks: ['less'],
                 options: {
                     spawn: false
@@ -28,9 +28,9 @@ module.exports = function(grunt) {
         csscomb: {
             dynamic_mappings: {
                 expand: true,
-                cwd: 'css/source/components',
+                cwd: 'less/source/components',
                 src: ['*.less'],
-                dest: 'css/source/components',
+                dest: 'less/source/components',
                 ext: '.less'
             }
         },
