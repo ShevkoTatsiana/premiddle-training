@@ -1,0 +1,7 @@
+.title {
+    font-size: var(--font-size-title);
+    font-weight: var(--font-weight-bold);
+    color: var(--main-color);
+    @mixin display center;
+    text-align: center;
+}

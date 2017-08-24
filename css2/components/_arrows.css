@@ -1,0 +1,42 @@
+$circle__height: 20px;
+$circle__color: var(--main-color);
+$circle-text__color: var(--color-03);
+$arrow-right: '>';
+$arrow-left: '<';
+
+@define-mixin arrow {
+    position: absolute;
+    display: block;
+    cursor: pointer;
+}
+
+@define-mixin arrow-after {
+    font-weight: var(--font-weight-bold);
+    display: block;
+    text-align: center;
+    @mixin circle $circle__height, $circle__color, $circle-text__color;
+
+}
+
+:root {
+        --arrow-right  {
+    &  {
+        right: 0;
+        margin-right: $circle__height;
+    }
+
+    &::after {
+         content: $arrow-right;
+     }
+    }
+
+    --arrow-left  {
+        &  {
+            left: 5px;
+        }
+
+        &::after {
+            content: $arrow-left;
+        }
+    }}
+

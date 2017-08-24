@@ -1,0 +1,110 @@
+@define-mixin display $position {
+    display: flex;
+    align-items: center;
+    justify-content: $position;
+}
+
+@define-mixin circle $size, $color1, $color2 {
+    width: $size;
+    height: $size;
+    background-color: $color1;
+    border-radius: 50%;
+    color: $color2;
+}
+
+@define-mixin max-width $height {
+    $max-width: $height*3;
+}
+
+@define-mixin button-checked $n, $c {
+    @for $i from 1 to $n {
+        .button$i:checked ~ .slider-component .inner {
+            margin-left: calc((1 - $(i)) * 100% / $c);
+        }
+    }
+}
+
+
+@define-mixin label-display $c {
+    @for $i from 1 to $c {
+        $plus : calc($(i) + 1);
+        $minus : calc($(i) - 1);
+        @if $i == 1 {
+            .button$i:checked ~ .commands label:nth-child($c) {
+            @mixin arrow;
+            @mixin arrow-after;
+                left: 5px;
+
+                &::after {
+                     content: $arrow-left;
+                 }
+            }
+
+            .button$i:checked ~ .commands label:nth-child($plus) {
+            @mixin arrow;
+            @mixin arrow-after;
+                right: 0;
+                margin-right: $circle__height;
+
+                &::after {
+                     content: $arrow-right;
+                }
+            }
+        }
+
+        @else if $i == $c {
+            .button$i:checked ~ .commands label:nth-child(1) {
+            @mixin arrow;
+            @mixin arrow-after;
+                right: 0;
+                margin-right: $circle__height;
+
+                &::after {
+                     content: $arrow-right;
+                }
+            }
+            .button$i:checked ~ .commands label:nth-child($minus) {
+            @mixin arrow;
+            @mixin arrow-after;
+                left: 5px;
+
+                &::after {
+                     content: $arrow-left;
+                }
+            }
+        }
+        @else {
+            .button$i:checked ~ .commands label:nth-child($plus) {
+            @mixin arrow;
+            @mixin arrow-after;
+                right: 0;
+                margin-right: $circle__height;
+
+                &::after {
+                     content: $arrow-right;
+                }
+            }
+            .button$i:checked ~ .commands label:nth-child($minus) {
+            @mixin arrow;
+            @mixin arrow-after;
+                left: 5px;
+
+                &::after {
+                     content: $arrow-left;
+                }
+            }
+        }
+    }
+}
+
+.some-class {
+    color: #fff;
+
+@for $val from var(--from) to var(--to) {
+    @if $val != var(--icon-exclude) {
+        .icon-$val {
+            background-position: 0 $(val)px;
+        }
+    }
+}
+}

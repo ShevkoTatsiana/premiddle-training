@@ -1,0 +1,89 @@
+$label-image_width: 100px;
+$item_background-color: var(--color-02);
+$input-after__height: 20px;
+$input-after__margin-top: 15px;
+$slider__margin-top: calc($input-after__height + $input-after__margin-top + 2px);
+
+.akordeon-item {
+    > .label
+    {
+        display: flex;
+        flex-direction: column;
+        margin: 40px 20px;
+        padding: 15px 50px 0;
+        cursor: pointer;
+        align-items: center;
+    }
+
+    > .label > .slider {
+        display: none;
+        width: var(--tab-image-width);
+        height: var(--slider-height);
+        margin-top: $slider__margin-top;
+        cursor: default;
+    }
+
+    > .acc:checked + .label > .slider {
+        display: flex;
+    }
+
+    > .acc:checked + .label {
+        background-color: $item_background-color;
+    }
+
+    > .label > .name {
+        font-size: var(--font-size);
+        font-weight: var(--font-weight-bold);
+        padding: 15px 0;
+    }
+
+    > .label > .image {
+        width: $label-image_width;
+    }
+
+    > .acc {
+        display: none;
+    }
+
+    > .label > .toggle::before,
+    > .label > .toggle::after,
+    > .label > .toggle:checked::before,
+    > .label > .toggle:checked::after
+    {
+        @mixin display center;
+    }
+
+    > .label > .toggle {
+        &::before
+        {
+            font-weight: var(--font-weight-bold);
+            width: $label-image_width;
+            margin-left: 50%;
+            content: 'SHOW RANGE';
+            transform: translateX(-50%);
+            color: var(--main-color);
+        }
+
+        &::after {
+            width: $input-after__height;
+            height: $input-after__height;
+            margin-top: $input-after__margin-top;
+            margin-left: 50%;
+            content: '+';
+            transform: translateX(-50%);
+            color: var(--color-03);
+            border-radius: 50%;
+            background-color: var(--main-color);
+        }
+    }
+
+    > .acc:checked + .label > .toggle {
+        &::before {
+            content: 'HIDE RANGE';
+        }
+
+        &::after {
+            content: '-';
+        }
+    }
+}

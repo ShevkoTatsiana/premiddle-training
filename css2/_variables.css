@@ -1,0 +1,14 @@
+:root {
+    --main-color: red;
+    --secondary-color: black;
+    --color-01: gray;
+    --color-02: #dcdcdc;
+    --color-03: #fff;
+
+    --font-weight-bold: 700;
+    --font-weight-regular: 400;
+    --font-size: 14px;
+    --font-size-title: 24px;
+    --slider-height: 200px;
+    --tab-image-width: 100px;
+}

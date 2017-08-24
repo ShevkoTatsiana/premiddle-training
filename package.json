@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
+    "css-loader": "^0.28.5",
     "grunt": "^1.0.1",
     "grunt-autoprefixer": "^3.0.4",
     "grunt-contrib-less": "^1.4.1",
@@ -12,9 +13,23 @@
     "grunt-csscomb": "^3.1.1",
     "gulp": "^3.9.1",
     "gulp-csso": "^3.0.0",
-    "gulp-sass": "^3.1.0"
+    "gulp-sass": "^3.1.0",
+    "postcss": "^6.0.9",
+    "postcss-conditionals": "^2.1.0",
+    "postcss-cssnext": "^3.0.2",
+    "postcss-for": "^2.1.1",
+    "postcss-for-var": "^1.0.3",
+    "postcss-import": "^10.0.0",
+    "postcss-loader": "^2.0.6",
+    "postcss-mixins": "^6.1.0",
+    "postcss-nested": "^2.1.2",
+    "postcss-simple-vars": "^4.1.0",
+    "precss": "^2.0.0",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.5.5"
   },
   "scripts": {
+    "start": "webpack --config webpack.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

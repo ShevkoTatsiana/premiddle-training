@@ -1,0 +1,38 @@
+$color_text: var(--color-01);
+$description_max-height: 100px;
+
+.tabs-block {
+  & {
+    @mixin display center;
+    position: relative;
+  }
+
+  > .radio {
+    display: none;
+  }
+
+  > .description {
+    position: absolute;
+    top: 50px;
+    display: none;
+    @mixin max-width $description_max-height;
+    max-width: $max-width;
+    text-align: center;
+    color: $color_text;
+  }
+
+  > .radio:checked + .link + .description {
+    display: block;
+  }
+
+  > .radio:checked + .link {
+    color: $color_text;
+    text-decoration: none;
+    cursor: text;
+  }
+
+  > .link{
+    cursor: pointer;
+    padding: 10px 20px;
+  }
+}

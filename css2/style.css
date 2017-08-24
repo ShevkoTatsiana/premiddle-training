@@ -1,0 +1,10 @@
+@import "_variables.css";
+@import "_rules.css";
+
+@import "_general.css";
+@import "components/_title.css";
+@import "components/_link.css";
+@import "components/_arrows.css";
+@import "components/_tabs-block.css";
+@import "components/_akordeon-item.css";
+@import "components/_slider-block.css";

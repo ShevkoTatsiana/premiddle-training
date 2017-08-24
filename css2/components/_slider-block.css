@@ -1,0 +1,110 @@
+$slider_background-color: var(--color-02);
+$slide-on-page-mobile__count: 1;
+$slide-on-page-tablet__count: 4;
+$commands-label-mobile__count: 6;
+$commands-label-tablet__count: 3;
+
+
+.slider-component {
+  position: absolute;
+  display: flex;
+  width: 100vw;
+  height: var(--slider-height);
+  left: 0;
+  background-color: $slider_background-color;
+
+  > .container {
+    width: inherit;
+    height: inherit;
+    overflow: hidden;
+  }
+
+  > .container > .inner {
+    display: flex;
+    height: inherit;
+    line-height: 0;
+  }
+
+  .slide {
+    padding: 30px 20px;
+    @mixin display space-between;
+    flex-direction: column;
+    font-weight: var(--font-weight-bold);
+    box-sizing: border-box;
+  }
+
+   .slide .image {
+    width: 100px;
+  }
+}
+
+.commands {
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.commands label {
+  /*@mixin arrow;
+  @mixin arrow-after;*/
+}
+
+.commands,.commands label,
+.slider-component .inner{
+   transition: all ease-out 0.5s;
+}
+
+@media only screen and (min-width : 320px) {
+  .slider-component .inner {
+    width: 600%;
+    margin-left: 0;
+  }
+
+  .slider-component .slide {
+    width: 100vw;
+  }
+
+  @mixin button-checked $commands-label-mobile__count ,$slide-on-page-mobile__count;
+  @mixin label-display $commands-label-mobile__count;
+}
+
+@media only screen and (min-width : 768px) {
+  .slider-component .inner {
+    width: 150%;
+    margin-left: 0;
+  }
+
+  .slider > .button4 ~ .commands label:nth-child(4),
+  .slider > .button5 ~ .commands label:nth-child(5),
+  .slider > .button6 ~ .commands label:nth-child(6) {
+    display: none !important;
+  }
+
+  .slider-component .slide {
+    width: 25vw;
+  }
+
+  @mixin button-checked $commands-label-tablet__count ,$slide-on-page-tablet__count;
+  .slider {
+      @mixin label-display $commands-label-tablet__count;
+    }
+}
+
+@media only screen and (min-width : 1200px) {
+  .slider-component .inner {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .slide {
+    width: 16.67%;
+  }
+
+  .commands {
+    display: none;
+  }
+}
